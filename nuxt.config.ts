@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   nitro: {
-    "preset": "cloudflare-pages",
+    preset: "cloudflare-pages",
   },
   routeRules: {
     "/blogs": { ssr: false },
