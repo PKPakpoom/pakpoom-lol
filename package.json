@@ -13,13 +13,17 @@
     "@nuxtjs/supabase": "^1.1.7",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@pinia/nuxt": "^0.5.1",
+    "aws-sdk": "^2.1591.0",
     "cloudflare": "^3.0.0",
     "jsonwebtoken": "^9.0.2",
+    "mock-aws-s3": "^4.0.2",
+    "nock": "^13.5.4",
     "nuxt": "^3.11.1",
     "pinia": "^2.1.7",
     "theme-change": "^2.5.0",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "wrangler": "^3.44.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
