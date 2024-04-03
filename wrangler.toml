@@ -9,3 +9,9 @@ rules = [
 
 [site]
 bucket = ".output/public"
+
+[vars]
+SUPABASE_URL="https://drnjbcaxcnmzhcmyszbx.supabase.co"
+SUPABASE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRybmpiY2F4Y25temhjbXlzemJ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA4NDI5NDYsImV4cCI6MjAyNjQxODk0Nn0.2gLoBrYGf35oxbKZwkep1AtdkYx1nIYaGjLEfSNUlXU"
+JWT_SECRET="mai bok"
+NITRO_PRESET="cloudflare-pages npm run build"
