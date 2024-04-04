@@ -1,6 +1,7 @@
 import { type H3Event } from "h3";
 import jwt from 'jsonwebtoken';
 
+const JWT_SECRET = "mai bok";
 
 export async function verifyUser(event: H3Event) {
     const token = getCookie(event, "token");
@@ -14,7 +15,7 @@ export async function verifyUser(event: H3Event) {
     let success = false;
     let username = undefined;
     // @ts-ignore
-    jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
+    jwt.verify(token, JWT_SECRET, (error, decoded) => {
         if (error) {
             setCookie(event, "token", "", {
                 httpOnly: true,
