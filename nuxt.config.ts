@@ -16,8 +16,8 @@ export default defineNuxtConfig({
     viewer: false,
   },
   supabase: {
-    url: process.env.SUPABASE_URL,
-    key: process.env.SUPABASE_KEY,
+    url: "https://drnjbcaxcnmzhcmyszbx.supabase.co", //process.env.SUPABASE_URL,
+    key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRybmpiY2F4Y25temhjbXlzemJ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA4NDI5NDYsImV4cCI6MjAyNjQxODk0Nn0.2gLoBrYGf35oxbKZwkep1AtdkYx1nIYaGjLEfSNUlXU", //process.env.SUPABASE_KEY,
     redirect: false,
   },
   pinia: {
