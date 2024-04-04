@@ -10,16 +10,21 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@mapbox/node-pre-gyp": "^1.0.11",
     "@nuxtjs/supabase": "^1.1.7",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@pinia/nuxt": "^0.5.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@supabase/gotrue-js": "^2.62.2",
+    "are-we-there-yet": "^4.0.2",
     "aws-sdk": "^2.1591.0",
     "cloudflare": "^3.0.0",
     "jsonwebtoken": "^9.0.2",
     "mock-aws-s3": "^4.0.2",
     "nock": "^13.5.4",
-    "nuxt": "^3.11.1",
+    "npmlog": "^7.0.1",
     "pinia": "^2.1.7",
+    "readable-stream": "^4.5.2",
     "theme-change": "^2.5.0",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
@@ -29,6 +34,7 @@
     "@types/bcrypt": "^5.0.2",
     "@types/jsonwebtoken": "^9.0.6",
     "bcrypt": "^5.1.1",
-    "daisyui": "^4.9.0"
+    "daisyui": "^4.9.0",
+    "nuxt": "^3.11.1"
   }
 }
