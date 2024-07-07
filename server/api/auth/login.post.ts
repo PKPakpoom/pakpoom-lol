@@ -50,6 +50,11 @@ export default defineEventHandler(async (event) => {
                 success: true,
                 token: token,
             };
+        } else {
+            return {
+                success: false,
+            };
+        
         }
     } catch (error) {
         return sendError(event, createError({
