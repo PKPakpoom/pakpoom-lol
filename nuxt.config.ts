@@ -26,7 +26,6 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "PKPakpoom",
-      
     }
   },
 })

@@ -26,6 +26,7 @@
     "pinia": "^2.1.7",
     "readable-stream": "^4.5.2",
     "theme-change": "^2.5.0",
+    "uri-js": "^4.4.1",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
     "wrangler": "^3.44.0"
