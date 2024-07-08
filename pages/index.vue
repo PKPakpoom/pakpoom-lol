@@ -10,6 +10,8 @@
       and this website is not finished yet.
     </p>
 
+    <FunFact />
+
   </div>
   
 </template>
