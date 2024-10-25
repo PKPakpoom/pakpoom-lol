@@ -33,8 +33,8 @@
 
 	<div v-if="!pending" class="flex flex-col items-center">
 		<div class="grid m-10 lg:m-20 gap-4 lg:gap-8 grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
-			<div class="card w-80 lg:w-96 bg-base-200 shadow-xl" v-for="d, i in data.data">
-				<figure v-if="images[i]"><img :src="images[i]" :alt="d.cover_img" /></figure>
+			<div class="card w-80 lg:w-96 bg-base-200 shadow-xl border border-slate-600" v-for="d, i in data.data">
+				<figure class="w-full h-48" v-if="images[i]"><img class="" :src="images[i]" :alt="d.cover_img" /></figure>
 				<figure v-else><div class="skeleton h-48 w-full"></div></figure>
 					<div class="card-body">
 						<h2 class="card-title">
@@ -45,7 +45,7 @@
 						</h3>
 						<p>{{ d.description }}</p>
 						<div class="card-actions justify-start">
-							<div v-for="tag in d.tags.tags" class="badge badge-outline">{{ tag }}</div> 
+							<div v-for="tag in d.tags.split(',')" class="badge badge-outline">{{ tag }}</div>
 						</div>
 
 						<div class=" card-actions justify-end">
@@ -82,7 +82,7 @@ function setImagesArray() {
 	}
 }
 
-const { data, pending, error, refresh } = useFetch("/api/blog/getblog", {
+const { data, pending, error, refresh } = useFetch("/api/blog/getblogs", {
 	method: "GET",
 });
 
@@ -95,20 +95,6 @@ watch(data, (newData) => {
 		setImagesArray();
 	}
 })
-
-
-// if (data.value) {
-// 	for (let i = 0; i < data.value.data.length; i++) {
-// 		getPublicUrl(data.value.data[i].cover_img).then((url) => {
-// 			images.push(url);
-// 			console.log(images);
-// 		}).catch((err) => {
-// 			console.error(err);
-// 		})
-// 	}
-// }
-
-
 
 async function getPublicUrl(filename) {
 	const response = await $fetch("/api/blog/getimg",{

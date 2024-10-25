@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center m-5">
+  <div class="flex flex-col items-center m-5 gap-4">
 		<div>
 			<h1 class="text-5xl m-5">Card Preview</h1>
 		</div>
@@ -67,9 +67,28 @@
 				</div>
 
 			</div>
-			
-			
+
 		</div>
+		<div class="grid gap-4 md:grid-cols-2 w-3/4">
+			<div>
+				<label class="markdown-container">
+					<div class="label">
+					  <span class="label-text">Preview Markdown</span>
+					</div>
+					<div v-html="previewMarkdown" class="w-full h-auto bg-base-200 rounded-lg p-4"></div>
+				</label>
+			</div>
+			<div>
+				<label class="form-control">
+					<div class="label">
+					  <span class="label-text">Markdown Editor</span>
+					</div>
+					<textarea v-model="content" class="textarea textarea-bordered w-full h-80" spellcheck="false" placeholder="Edit Here"></textarea>
+				</label>
+			</div>
+		</div>
+		
+		
 
 		<button @click="upload" class="btn">
 			<span v-show="isUploading" class="loading loading-spinner"></span>
@@ -82,10 +101,12 @@
 
 
 <script setup>
+import { marked } from 'marked';
+import { onMounted } from 'vue';
 
 const store = userStore();
 
-const uploadedImage = ref('https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg');
+const uploadedImage = ref('https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp');
 const isUploading = ref(false);
 const errMessage = ref('');
 
@@ -101,12 +122,19 @@ const handleFileUpload = async (event) => {
 
 		reader.readAsDataURL(file);
 	} else {
-		uploadedImage.value = 'https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg';
+		uploadedImage.value = 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp';
 	}
 };
 
+const previewMarkdown = ref('');
+onMounted(() => {
+	watch(content, () => {
+		previewMarkdown.value = marked.parse(content.value);
+	});
+});
 
 const name = ref('Name');
+const content = ref('');
 const description = ref('Description');
 const tags = ref('Dev,Code');
 
@@ -150,9 +178,9 @@ async function upload() {
 	const blog = {
 		name: name.value,
 		author: store.username,
-		data: {},
+		content: content.value,
 		description: description.value,
-		tags: {"tags": tags.value.split(',')},
+		tags: tags.value,
 		cover_img: `${name.value}-cover.${file.type.split('/')[1]}`,
 	};
 	try {
