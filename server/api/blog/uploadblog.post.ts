@@ -8,35 +8,43 @@ export default defineEventHandler(async (event) => {
             message: 'Unauthorized',
         });
     }
+
     const body = await readBody(event);
-    console.log('body:', body);
+
     try {
-        const { name, author, data, description, tags, cover_img } = body;
-        if (!name || !author || !data || !description || !tags || !cover_img) {
+        const { name, author, content, description, tags, cover_img } = body;
+
+        // Validate required fields
+        if (!name || !author || !description || !tags || !cover_img) {
             return createError({
                 statusCode: 400,
                 message: 'Missing required fields.',
             });
         }
 
-        const { error } = await supabase
+        const { data, error } = await supabase
             .from('Blogs')
-            .insert([{ name, author, data, description, tags, cover_img }]);
+            .insert([{ name, author, content, description, tags, cover_img }])
+            .select();
 
         if (error) {
-            console.error('Error uploading blog post:', error);
-            throw error;
+            console.error('Supabase error:', error);
+            return createError({
+                statusCode: 400,
+                message: 'Database error uploading blog post.',
+            });
         }
 
         return {
             statusCode: 200,
             body: {
                 message: 'Blog post uploaded successfully.',
-            }
+                data, // return data for confirmation
+            },
         };
 
-
     } catch (error) {
+        console.error('Error in blog upload handler:', error);
         return createError({
             statusCode: 400,
             message: 'Error uploading blog post.',

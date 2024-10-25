@@ -1,8 +1,8 @@
 import { supabase } from '~/server/supabase';
 
+
 export default defineEventHandler(async (event) => {
-    const name = event.headers.get('name');
-    const { data, error } = await supabase.from('Blogs').select('name,author,created_at,content,description,tags,cover_img').eq('name', name);
+    const { data, error } = await supabase.from('Blogs').select('name,author,created_at,description,tags,cover_img');
     if (error) {
         return {
             success: false,
@@ -14,5 +14,8 @@ export default defineEventHandler(async (event) => {
         success: true,
         data: data ?? null,
     };
+
+
+
 
 });
